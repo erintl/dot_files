@@ -1,8 +1,10 @@
 return {
   {
-    "folke/which-key.nvim",
+    "kylechui/nvim-surround",
+    version = "*",
     event = "VeryLazy",
     opts = {
     },
   },
 }
+

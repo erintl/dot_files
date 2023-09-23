@@ -2,10 +2,6 @@ vim.cmd [[
   syntax enable
 ]]
 
--- disable netrw
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 -- vim options
 vim.opt.termguicolors = true
 vim.opt.hlsearch = true
@@ -13,7 +9,7 @@ vim.opt.ruler = true
 vim.opt.showmatch = true
 vim.opt.incsearch = true
 vim.opt.number = true
-vim.opt.backspace = { 'indent', 'eol', 'start' }
+vim.opt.backspace = { "indent", "eol", "start" }
 vim.opt.textwidth = 0
 vim.opt.smartindent = false
 vim.opt.tabstop = 2
@@ -24,25 +20,27 @@ vim.opt.expandtab = true
 vim.opt.wrap = true
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
-vim.opt.wildignore = { '.git', '*/build/*' }
+vim.opt.wildignore = { ".git", "*/build/*" }
 vim.opt.showmode = false
 vim.opt.cursorline = true
-vim.opt.completeopt= { 'menuone', 'noselect' } 
+-- vim.opt.completeopt= { "menuone", "noselect" } 
 vim.opt.timeout = true
 vim.opt.updatetime = 250
-vim.opt.timeoutlen = 1000
+vim.opt.timeoutlen = 500
 vim.opt.breakindent = true
-vim.opt.signcolumn = 'yes'
-vim.opt.background = 'dark'
+vim.opt.signcolumn = "yes"
+vim.opt.background = "dark"
+vim.opt.undofile = true
+vim.opt.clipboard = "unnamedplus"
 
 -- Highlight on yank
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
     vim.highlight.on_yank()
   end,
   group = highlight_group,
-  pattern = '*',
+  pattern = "*",
 })
 -- Status
 -- vim.opt.laststatus = 2

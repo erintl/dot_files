@@ -12,5 +12,18 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins")
+require("lazy").setup(
+  {
+    { import = "plugins" },
+    { import = "plugins.completion" },
+    { import = "plugins.lsp" },
+    { import = "plugins.nvim-treesitter" },
+    { import = "plugins.telescope" },
+  },
+  {
+    change_detection = {
+      notify = false,
+    },
+  }
+)
 

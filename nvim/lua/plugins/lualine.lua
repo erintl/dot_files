@@ -4,17 +4,15 @@ return {
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
-    config = function()
-      require("lualine").setup({
-        options = {
-          theme = "tokyonight",
-          component_separators = { left = "", right = "" },
-          section_separators = { left = "", right = "" },
-          disabled_filetypes = {
-            statusline = { "NvimTree" }
-          }
-        }
-      })
-    end,
+    opts = {
+      options = {
+        theme = "tokyonight",
+        component_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
+        disabled_filetypes = {
+          statusline = { "NvimTree" },
+        },
+      },
+    },
   },
 }

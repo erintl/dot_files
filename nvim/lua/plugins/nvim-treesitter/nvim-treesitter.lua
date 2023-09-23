@@ -60,7 +60,7 @@ return {
             init_selection = '<c-space>',
             node_incremental = '<c-space>',
             scope_incremental = '<c-s>',
-            node_decremental = '<c-x>',
+            node_decremental = '<c-z>',
           },
         },
         textobjects = {
@@ -68,10 +68,8 @@ return {
           lockahead = true,
         }
       })
-
       require("treesitter-context").setup()
-    end,
-    init = function()
+
       -- Code Folding
       vim.opt.foldmethod = "expr"
       vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
