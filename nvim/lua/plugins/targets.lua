@@ -1,5 +1,6 @@
 return {
   {
-    "wellle/targets.vim"
+    "wellle/targets.vim",
+    event = { "BufReadPre", "BufNewFile" },
   },
 }

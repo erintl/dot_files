@@ -5,5 +5,6 @@ return {
     event = "LspAttach",
     opts = {
     },
+    lazy = true,
   },
 }

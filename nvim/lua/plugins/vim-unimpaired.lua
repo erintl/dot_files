@@ -1,6 +1,7 @@
 return {
   {
     "tpope/vim-unimpaired",
+    event = { "BufReadPre", "BufNewFile" },
     init = function()
       vim.keymap.set("n", "<C-k>", "<Plug>(unimpaired-move-up)", { silent = true })
       vim.keymap.set("n", "<C-j>", "<Plug>(unimpaired-move-down)", { silent = true })
