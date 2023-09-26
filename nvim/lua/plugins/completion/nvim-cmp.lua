@@ -8,10 +8,12 @@ return {
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
       "rafamadriz/friendly-snippets",
+      "onsails/lspkind.nvim",
     },
     config = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
+      local lspkind = require("lspkind")
 
       luasnip.filetype_extend("ruby", { "rails" })
 
@@ -66,6 +68,15 @@ return {
           { name = "buffer" },
           { name = "path" },
         }),
+        window = {
+          documentation = cmp.config.window.bordered()
+        },
+        formatting = {
+          format = lspkind.cmp_format({
+            maxwidth = 50,
+            ellipsis_char = "...",
+          }),
+        },
       })
     end,
   },

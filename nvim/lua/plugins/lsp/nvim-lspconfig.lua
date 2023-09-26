@@ -35,6 +35,9 @@ return {
         opts.desc = "Show LSP type definitions"
         keymap.set("n", "gt", telescope_builtin.lsp_type_definitions, opts)
 
+        opts.desc = "Display signature information"
+        keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
+
         opts.desc = "Show available code actions"
         keymap.set({ "n", "v" }, "ca", vim.lsp.buf.code_action, opts)
 
