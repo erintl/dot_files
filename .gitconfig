@@ -1,0 +1,7 @@
+[tool]
+  merge = meld
+[init]
+  defaultBranch = main
+[fetch]
+  prune = true
+  pruneTags = true

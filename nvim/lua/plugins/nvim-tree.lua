@@ -7,16 +7,17 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     config = function()
-      -- disable netrw
-      vim.g.loaded_netrw = 1
-      vim.g.loaded_netrwPlugin = 1
-
       require("nvim-tree").setup()
 
       -- Keymaps
       local keymap = vim.keymap
-      keymap.set("n", "<localleader>nt", "<cmd>NvimTreeToggle<cr>")
-      keymap.set("n", "<localleader>nf", "<cmd>NvimTreeFindFile<cr>")
+      local opts = {}
+
+      opts.desc = "Nvim Tree toggle"
+      keymap.set("n", "<localleader>nt", "<cmd>NvimTreeToggle<CR>", opts)
+
+      opts.desc = "Nvim Tree find file toggle"
+      keymap.set("n", "<localleader>nf", "<cmd>NvimTreeFindFileToggle<CR>", opts)
     end,
   },
 }

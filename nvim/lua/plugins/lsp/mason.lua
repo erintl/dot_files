@@ -24,7 +24,7 @@ return {
           "tsserver",
           "html",
           "cssls",
-          "tailwindcss",
+          -- "tailwindcss",
           "lua_ls",
           "graphql",
           "emmet_ls",

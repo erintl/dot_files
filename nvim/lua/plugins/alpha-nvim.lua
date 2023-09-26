@@ -26,7 +26,7 @@ return {
         dashboard.button("\\ff", "󰈞  > Find file", "<cmd>Telescope find_files<CR>"),
         dashboard.button("\\fo", "󰊄  > Recently opened files", "<cmd>Telescope oldfiles<CR>"),
         dashboard.button("\\fr", "  > Find word", "<cmd>Telescope live_grep_args<CR>"),
-        dashboard.button("\\wr", "  > Restore session for current directory", "<cmd>SessionRestore<CR>"),
+        dashboard.button("\\sr", "  > Restore session for current directory", "<cmd>SessionRestore<CR>"),
         dashboard.button("q", "  > Quit NEOVIM", "<cmd>qa<CR>"),
       }
 

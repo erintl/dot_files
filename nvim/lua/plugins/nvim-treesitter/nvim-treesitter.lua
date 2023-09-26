@@ -1,11 +1,12 @@
 return {
-  {
+{
     "nvim-treesitter/nvim-treesitter",
     dependencies =  {
       "nvim-treesitter/nvim-treesitter-textobjects",
       "nvim-treesitter/nvim-treesitter-context",
     },
     build = ":TSUpdate",
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       local configs = require("nvim-treesitter.configs")
       configs.setup({
@@ -50,6 +51,7 @@ return {
         sync_install = true,
         highlight = {
           enable = true,
+          additional_vim_regex_highlighting = false
         },
         indent = {
           enable = true,
@@ -57,27 +59,19 @@ return {
         incremental_selection = {
           enable = true,
           keymaps = {
-            init_selection = '<c-space>',
-            node_incremental = '<c-space>',
-            scope_incremental = '<c-s>',
-            node_decremental = '<c-z>',
+            init_selection = "<c-space>",
+            node_incremental = "<c-space>",
+            scope_incremental = "<c-s>",
+            node_decremental = "<bs>",
           },
         },
-        textobjects = {
-          enable = true,
-          lockahead = true,
-        }
       })
-      require("treesitter-context").setup()
 
       -- Code Folding
-      vim.opt.foldmethod = "expr"
-      vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-      vim.opt.foldenable = false 
-
-      -- Jump to context (upwards)
-      local treesitter_context = require("treesitter-context")
-      vim.keymap.set("n", "[c", treesitter_context.go_to_context, { silent = true })
+      local opt = vim.opt
+      opt.foldmethod = "expr"
+      opt.foldexpr = "nvim_treesitter#foldexpr()"
+      opt.foldenable = false
     end,
   },
 }

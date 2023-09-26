@@ -16,12 +16,12 @@ return {
       local keymap = vim.keymap
       local opts = { noremap = true, silent = true }
 
-      local on_attach = function(_client, bufnr)
+      local on_attach = function(client, bufnr)
         opts.buffer = bufnr
 
         -- Set keybindings
         opts.desc = "Show LSP references"
-        keymap.set("n", "gR", telescope_builtin.lsp_references, opts)
+        keymap.set("n", "gr", telescope_builtin.lsp_references, opts)
 
         opts.desc = "Go to declaration"
         keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
@@ -33,13 +33,19 @@ return {
         keymap.set("n", "gi", telescope_builtin.lsp_implementations, opts)
 
         opts.desc = "Show LSP type definitions"
-        keymap.set("n", "gt", telescope_builtin.lsp_type_definitions, opts)
+        keymap.set("n", "gy", telescope_builtin.lsp_type_definitions, opts)
 
         opts.desc = "Display signature information"
         keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
 
+        opts.desc = "Show document symbols"
+        keymap.set("n", "<leader>ds", telescope_builtin.lsp_document_symbols, opts)
+
+        opts.desc = "Show workspace symbols"
+        keymap.set("n", "<leader>ws", telescope_builtin.lsp_dynamic_workspace_symbols, opts)
+
         opts.desc = "Show available code actions"
-        keymap.set({ "n", "v" }, "ca", vim.lsp.buf.code_action, opts)
+        keymap.set({ "n", "v" }, "co", vim.lsp.buf.code_action, opts)
 
         opts.desc = "Smart rename"
         keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
@@ -69,7 +75,7 @@ return {
         keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
 
         opts.desc = "LSP list workspace folders"
-        keymap.set("n", "<leader>wl", function() print(vim.lsp.list_workspace_folders) end, opts)
+        keymap.set("n", "<leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, opts)
 
         opts.desc = "LSP format buffer"
         keymap.set("n", "<leader>lf", function() vim.lsp.buf.format({async = true}) end, opts)
@@ -88,6 +94,8 @@ return {
       lspconfig["solargraph"].setup({
         capabilities = capabilities,
         on_attach = on_attach,
+        cmd = { os.getenv( "HOME" ) .. "/.rbenv/shims/solargraph", 'stdio' },
+        root_dir = lspconfig.util.root_pattern("Gemfile", ".git", "."),
       })
 
       -- configure html server
@@ -109,27 +117,27 @@ return {
       })
 
       -- configure tailwindcss server
-      lspconfig["tailwindcss"].setup({
-        capabilities = capabilities,
-        on_attach = on_attach,
-      })
+      -- lspconfig["tailwindcss"].setup({
+      --   capabilities = capabilities,
+      --   on_attach = on_attach,
+      -- })
 
       -- configure svelte server
-      lspconfig["svelte"].setup({
-        capabilities = capabilities,
-        on_attach = function(client, bufnr)
-          on_attach(client, bufnr)
-
-          vim.api.nvim_create_autocmd("BufWritePost", {
-            pattern = { "*.js", "*.ts" },
-            callback = function(ctx)
-              if client.name == "svelte" then
-                client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
-              end
-            end,
-          })
-        end,
-      })
+      -- lspconfig["svelte"].setup({
+      --   capabilities = capabilities,
+      --   on_attach = function(client, bufnr)
+      --     on_attach(client, bufnr)
+      --
+      --     vim.api.nvim_create_autocmd("BufWritePost", {
+      --       pattern = { "*.js", "*.ts" },
+      --       callback = function(ctx)
+      --         if client.name == "svelte" then
+      --           client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
+      --         end
+      --       end,
+      --     })
+      --   end,
+      -- })
 
       -- configure graphql language server
       lspconfig["graphql"].setup({
@@ -157,6 +165,7 @@ return {
         on_attach = on_attach,
         settings = { -- custom settings for lua
           Lua = {
+            telemetry = { enable = false },
             -- make the language server recognize "vim" global
             diagnostics = {
               globals = { "vim" },
