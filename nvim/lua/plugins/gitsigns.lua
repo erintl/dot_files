@@ -1,6 +1,7 @@
 return {
   {
     "lewis6991/gitsigns.nvim",
+    lazy = true,
     event = { "BufReadPre", "BufNewFile" },
     opts = {
       on_attach = function(bufnr)
@@ -11,7 +12,7 @@ return {
 
         -- don't override the built-in and fugitive keymaps
         keymap.set(
-          {"n", "v"},
+          { "n", "v" },
           "]c",
           function()
             if vim.wo.diff then return ']c' end
@@ -21,7 +22,7 @@ return {
           { expr = true, buffer = bufnr, desc = "Jump to next hunk" }
         )
         keymap.set(
-          {"n", "v"},
+          { "n", "v" },
           "[c",
           function()
             if vim.wo.diff then return "[c" end

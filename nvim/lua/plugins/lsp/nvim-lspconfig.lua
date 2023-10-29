@@ -1,6 +1,7 @@
 return {
   {
     "neovim/nvim-lspconfig",
+    lazy = true,
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
@@ -78,7 +79,7 @@ return {
         keymap.set("n", "<leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, opts)
 
         opts.desc = "LSP format buffer"
-        keymap.set("n", "<leader>lf", function() vim.lsp.buf.format({async = true}) end, opts)
+        keymap.set("n", "<leader>lf", function() vim.lsp.buf.format({ async = true }) end, opts)
       end
 
       -- Setup gutter LSP diagnotic signs
@@ -94,7 +95,7 @@ return {
       lspconfig["solargraph"].setup({
         capabilities = capabilities,
         on_attach = on_attach,
-        cmd = { os.getenv( "HOME" ) .. "/.rbenv/shims/solargraph", 'stdio' },
+        cmd = { os.getenv("HOME") .. "/.rbenv/shims/solargraph", 'stdio' },
         root_dir = lspconfig.util.root_pattern("Gemfile", ".git", "."),
       })
 
