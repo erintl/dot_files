@@ -32,7 +32,9 @@ return {
           "graphql",
           "emmet_ls",
           "pyright",
-          "solargraph",
+          -- "solargraph",
+          "ruby_ls",
+          "rubocop",
         },
         -- auto-install configured servers (with lspconfig)
         automatic_installation = true, -- not the same as ensure_installed
