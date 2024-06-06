@@ -13,13 +13,13 @@ return {
     config = function()
       local telescope = require("telescope")
       local actions = require("telescope.actions")
-      local trouble = require("trouble.providers.telescope")
+      local trouble = require("trouble.sources.telescope")
 
       telescope.setup({
         defaults = {
           mappings = {
             i = {
-              ["<c-r>"] = trouble.open_with_trouble,
+              ["<c-r>"] = trouble.open,
               ["<c-k>"] = actions.move_selection_previous,
               ["<c-j>"] = actions.move_selection_next,
               ["<c-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
