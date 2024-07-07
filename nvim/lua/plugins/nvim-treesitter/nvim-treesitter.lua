@@ -35,7 +35,7 @@ return {
           "jq",
           "json",
           "kotlin",
-          "latex",
+          -- "latex",
           "markdown",
           "markdown_inline",
           "python",
