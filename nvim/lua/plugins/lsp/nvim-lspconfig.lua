@@ -91,14 +91,7 @@ return {
 
       -- Configure language servers
 
-      -- configure ruby server
-      -- lspconfig["solargraph"].setup({
-      --   capabilities = capabilities,
-      --   on_attach = on_attach,
-      --   cmd = { os.getenv("HOME") .. "/.rbenv/shims/solargraph", 'stdio' },
-      --   root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
-      -- })
-
+      -- configure ruby servers
       lspconfig["rubocop"].setup({
         capabilities = capabilities,
         on_attach = on_attach,
@@ -108,6 +101,12 @@ return {
         capabilities = capabilities,
         on_attach = on_attach,
         init_options = { formatter = "none" },
+      })
+
+      lspconfig["sorbet"].setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        cmd = { "srb", "tc", "--lsp", "--disable-watchman" }
       })
 
       -- configure html server

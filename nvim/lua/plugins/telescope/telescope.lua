@@ -9,6 +9,7 @@ return {
       "nvim-tree/nvim-web-devicons",
       "nvim-telescope/telescope-fzf-native.nvim",
       "nvim-telescope/telescope-live-grep-args.nvim",
+      "folke/todo-comments.nvim",
     },
     config = function()
       local telescope = require("telescope")
@@ -18,6 +19,7 @@ return {
 
       telescope.setup({
         defaults = {
+          path_display = { "smart" },
           mappings = {
             i = {
               ["<c-t>"] = open_with_trouble,
@@ -85,6 +87,9 @@ return {
 
       opts.desc = "Telescope harpoon marks"
       keymap.set("n", "<leader>fm", harpoon.marks, opts)
+
+      opts.desc = "Telescope find TODOs"
+      keymap.set("n", "<localleader>ft", "<cmd>TodoTelescope<cr>", opts)
     end,
   },
 }

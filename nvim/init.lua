@@ -1,3 +1,3 @@
-require("user.mappings")
-require("user.options")
-require("user.lazy")
+require("core.mappings")
+require("core.options")
+require("core.lazy")

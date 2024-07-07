@@ -1,6 +1,7 @@
 vim.cmd [[
   syntax enable
 ]]
+vim.cmd("let g:netrw_liststyle = 3")
 
 -- vim options
 local opt = vim.opt
@@ -25,7 +26,7 @@ opt.ignorecase = true
 opt.wildignore = { ".git", "*/build/*" }
 opt.showmode = false
 opt.cursorline = true
--- vim.opt.completeopt= { "menuone", "noselect" } 
+-- vim.opt.completeopt= { "menuone", "noselect" }
 opt.timeout = true
 opt.updatetime = 250
 opt.timeoutlen = 500
@@ -35,6 +36,13 @@ opt.background = "dark"
 opt.undofile = true
 opt.clipboard = "unnamedplus"
 opt.list = true
+
+-- split windows
+opt.splitright = true
+opt.splitbelow = true
+
+-- turn off swapfile
+opt.swapfile = false
 
 -- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })

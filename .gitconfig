@@ -5,3 +5,8 @@
 [fetch]
   prune = true
   pruneTags = true
+[user]
+	name = Tim Erin
+	email = erintl@gmail.com
+[core]
+	editor = nvim
