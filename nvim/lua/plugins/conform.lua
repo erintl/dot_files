@@ -18,7 +18,7 @@ return {
           typescript = { "prettier" },
           typescriptreact = { "prettier" },
           yaml = { "prettier" },
-          -- lua = { "stylua" },
+          lua = { "stylua" },
         },
         format_on_save = {
           lsp_fallback = true,

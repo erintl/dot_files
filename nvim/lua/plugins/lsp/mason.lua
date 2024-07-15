@@ -16,9 +16,9 @@ return {
           icons = {
             package_installed = "✓",
             package_pending = "➜",
-            package_uninstalled = "✗"
-          }
-        }
+            package_uninstalled = "✗",
+          },
+        },
       })
 
       mason_lspconfig.setup({
@@ -34,7 +34,7 @@ return {
           "pyright",
           "ruby_lsp",
           "rubocop",
-          "sorbet"
+          "sorbet",
         },
         -- auto-install configured servers (with lspconfig)
         automatic_installation = true, -- not the same as ensure_installed

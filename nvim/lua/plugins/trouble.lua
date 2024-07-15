@@ -15,7 +15,7 @@ return {
       },
       {
         "<leader>xX",
-        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        "<cmd>Trouble diagnostics toggle filter = { buf = 0 }<cr>",
         desc = "Buffer Diagnostics (Trouble)",
       },
       {
@@ -40,8 +40,13 @@ return {
       },
       {
         "<leader>xt",
-        "<cmd>Trouble todo toggle<CR>",
+        "<cmd>Trouble todo toggle filter = { tag = { FIX, TODO, HACK, WARN, PERF, NOTE, TEST } }<CR>",
         desc = "Open TODOs in trouble",
+      },
+      {
+        "<leader>xT",
+        "<cmd>Trouble todo toggle filter = { buf = 0 }<CR>",
+        desc = "Open buffer TODOs in trouble",
       },
     },
   },
