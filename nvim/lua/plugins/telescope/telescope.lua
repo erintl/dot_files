@@ -22,12 +22,12 @@ return {
           path_display = { "smart" },
           mappings = {
             i = {
-              ["<c-t>"] = open_with_trouble,
+              ["<c-o>"] = open_with_trouble,
               ["<c-k>"] = actions.move_selection_previous,
               ["<c-j>"] = actions.move_selection_next,
               ["<c-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
             },
-            n = { ["<c-t>"] = open_with_trouble },
+            n = { ["<c-o>"] = open_with_trouble },
           },
         },
         pickers = {
@@ -83,7 +83,9 @@ return {
       keymap.set("n", "<leader>fq", builtin.quickfix, opts)
 
       opts.desc = "Telescope colorscheme"
-      keymap.set("n", "<leader>fs", function() builtin.colorscheme({ enable_preview = true }) end, opts)
+      keymap.set("n", "<leader>fs", function()
+        builtin.colorscheme({ enable_preview = true })
+      end, opts)
 
       opts.desc = "Telescope harpoon marks"
       keymap.set("n", "<leader>fm", harpoon.marks, opts)
