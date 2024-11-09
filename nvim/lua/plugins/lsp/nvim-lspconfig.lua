@@ -5,7 +5,6 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
-      "j-hui/fidget.nvim",
       "antosha417/nvim-lsp-file-operations",
       "folke/lazydev.nvim",
     },
@@ -54,7 +53,9 @@ return {
           keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 
           opts.desc = "Show buffer diagnostics"
-          keymap.set("n", "<leader>D", function() telescope_builtin.diagnostics({ bufnr = 0 }) end, opts)
+          keymap.set("n", "<leader>D", function()
+            telescope_builtin.diagnostics({ bufnr = 0 })
+          end, opts)
 
           opts.desc = "Show line diagnostics"
           keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
@@ -78,10 +79,14 @@ return {
           keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
 
           opts.desc = "LSP list workspace folders"
-          keymap.set("n", "<leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, opts)
+          keymap.set("n", "<leader>wl", function()
+            print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+          end, opts)
 
           opts.desc = "LSP format buffer"
-          keymap.set("n", "<leader>lf", function() vim.lsp.buf.format({ async = true }) end, opts)
+          keymap.set("n", "<leader>lf", function()
+            vim.lsp.buf.format({ async = true })
+          end, opts)
         end,
       })
 
@@ -109,7 +114,7 @@ return {
         ["sorbet"] = function()
           lspconfig["sorbet"].setup({
             capabilities = capabilities,
-            cmd = { "srb", "tc", "--lsp", "--disable-watchman" }
+            cmd = { "srb", "tc", "--lsp", "--disable-watchman" },
           })
         end,
         ["graphql"] = function()
