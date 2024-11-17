@@ -1,7 +1,31 @@
 AllCops:
   NewCops: enable
 
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/TrailingEmptyLines:
+  EnforcedStyle: final_newline
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/OptionalBooleanParameter:
   Enabled: false
 
 Style/StringLiterals:
@@ -11,10 +35,4 @@ Style/StringLiterals:
     - double_quotes
 
 Style/SymbolArray:
-  Enabled: false
-
-Style/Documentation:
-  Enabled: false
-
-Metrics/MethodLength:
   Enabled: false
