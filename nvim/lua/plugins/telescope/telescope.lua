@@ -4,7 +4,6 @@ return {
     branch = "0.1.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "ThePrimeagen/harpoon",
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons",
       "nvim-telescope/telescope-fzf-native.nvim",
@@ -43,13 +42,11 @@ return {
 
       telescope.load_extension("fzf")
       telescope.load_extension("live_grep_args")
-      telescope.load_extension("harpoon")
 
       -- Setup mappings
       local keymap = vim.keymap
       local builtin = require("telescope.builtin")
       local live_grep_args = telescope.extensions.live_grep_args
-      local harpoon = telescope.extensions.harpoon
       local opts = {}
 
       opts.desc = "Telescope find files"
@@ -86,9 +83,6 @@ return {
       keymap.set("n", "<leader>fs", function()
         builtin.colorscheme({ enable_preview = true })
       end, opts)
-
-      opts.desc = "Telescope harpoon marks"
-      keymap.set("n", "<leader>fm", harpoon.marks, opts)
 
       opts.desc = "Telescope find TODOs"
       keymap.set("n", "<localleader>ft", "<cmd>TodoTelescope<cr>", opts)

@@ -3,27 +3,10 @@ return {
     "nvim-lualine/lualine.nvim",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
-      "ThePrimeagen/harpoon",
     },
     config = function()
       local lualine = require("lualine")
       local lazy_status = require("lazy.status")
-      local harpoon_mark = require("harpoon.mark")
-      local harpoon_status = function()
-        local total_marks = harpoon_mark.get_length()
-        if total_marks == 0 then
-          return ""
-        end
-
-        local current_mark = "-"
-        local mark_index = harpoon_mark.get_current_index()
-        if mark_index ~= nil then
-          current_mark = tostring(mark_index)
-        end
-
-        return string.format("󱡅 %s/%d", current_mark, total_marks)
-      end
-
       local trouble = require("trouble")
       local symbols = trouble.statusline({
         mode = "lsp_document_symbols",
@@ -49,7 +32,7 @@ return {
         sections = {
           lualine_c = {
             "filename",
-            { symbols.get, cond = symbols.has }
+            { symbols.get, cond = symbols.has },
           },
           lualine_x = {
             {
@@ -57,7 +40,6 @@ return {
               cond = lazy_status.has_updates,
               color = { fg = "ff9e64" },
             },
-            harpoon_status,
             "encoding",
             "fileformat",
             "filetype",
