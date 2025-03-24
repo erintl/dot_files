@@ -1,6 +1,9 @@
 AllCops:
   NewCops: enable
 
+Layout/CaseIndentation:
+  Enabled: false
+
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
