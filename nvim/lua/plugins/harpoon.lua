@@ -11,6 +11,9 @@ return {
 
       harpoon:setup()
 
+      local harpoon_extensions = require("harpoon.extensions")
+      harpoon:extend(harpoon_extensions.builtins.highlight_current_file())
+
       local conf = require("telescope.config").values
       local function toggle_telescope(harpoon_files)
         local file_paths = {}
@@ -33,7 +36,6 @@ return {
       keymap.set("n", "<leader>fm", function()
         toggle_telescope(harpoon:list())
       end, { desc = "Open harpoon window" })
-
       keymap.set("n", "<leader>a", function()
         harpoon:list():add()
       end, { desc = "Harpoon add file" })

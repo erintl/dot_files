@@ -73,13 +73,13 @@ return {
           keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
 
           opts.desc = "LSP add workspace folder"
-          keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
+          keymap.set("n", "<leader>la", vim.lsp.buf.add_workspace_folder, opts)
 
           opts.desc = "LSP remove workspace folder"
-          keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
+          keymap.set("n", "<leader>lr", vim.lsp.buf.remove_workspace_folder, opts)
 
           opts.desc = "LSP list workspace folders"
-          keymap.set("n", "<leader>wl", function()
+          keymap.set("n", "<leader>ll", function()
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
           end, opts)
 
