@@ -13,11 +13,16 @@ return {
     config = function()
       local telescope = require("telescope")
       local actions = require("telescope.actions")
+      local lga_actions = require("telescope-live-grep-args.actions")
       local open_with_trouble = require("trouble.sources.telescope").open
-      local add_to_trouble = require("trouble.sources.telescope").add
 
       telescope.setup({
         defaults = {
+          layout_config = {
+            width = { padding = 0 },
+            height = { padding = 0 },
+            preview_width = 0.5,
+          },
           path_display = { "smart" },
           mappings = {
             i = {
@@ -33,9 +38,26 @@ return {
           find_files = {
             hidden = true,
             follow = true,
+            file_ignore_patterns = {
+              ".git",
+              "**/*.rbi",
+            },
           },
           git_files = {
             show_untracked = true,
+          },
+        },
+        extensions = {
+          live_grep_args = {
+            auto_quoting = true,
+            mappings = {
+              i = {
+                ["<C-k>"] = lga_actions.quote_prompt(),
+                ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+                -- freeze the current list and start a fuzzy search in the frozen list
+                ["<C-space>"] = lga_actions.to_fuzzy_refine,
+              },
+            },
           },
         },
       })

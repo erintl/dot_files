@@ -1,15 +1,18 @@
 return {
   {
     "vim-test/vim-test",
-    lazy = true,
+    dependencies = {
+      "preservim/vimux",
+    },
     event = { "BufReadPre", "BufNewFile" },
     init = function()
-      vim.g["test#strategy"] = "toggleterm"
+      vim.g["test#strategy"] = "vimux"
     end,
     keys = {
       { "<leader>rb", "<cmd>TestFile<cr>", desc = "Run all tests in file" },
       { "<leader>rf", "<cmd>TestNearest<cr>", desc = "Run nearest test" },
       { "<leader>rl", "<cmd>TestLast<cr>", desc = "Re-run last test" },
+      { "<leader>rd", "Obinding.pry<esc>", desc = "Insert binding.pry statement" },
     },
   },
 }

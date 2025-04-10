@@ -13,9 +13,6 @@ return {
         auto_restore_enabled = false,
         auto_session_supress_dirs = { "~/", "~/Downloads", "~/Documents" },
       })
-
-      -- Set custom keymaps
-      local keymap = vim.keymap
     end,
   },
 }
