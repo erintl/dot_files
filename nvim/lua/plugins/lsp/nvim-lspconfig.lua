@@ -116,50 +116,64 @@ return {
       mason_lsp_config.setup_handlers({
         -- default handlers for installed servers
         function(server_name)
-          lspconfig[server_name].setup({
+          vim.lsp.config(server_name, {
             capabilities = capabilities,
           })
+          vim.lsp.enable(server_name)
         end,
-        ["ruby_lsp"] = function()
-          lspconfig["ruby_lsp"].setup({
-            capabilities = capabilities,
-            init_options = { formatter = "none" },
-          })
-        end,
-        ["sorbet"] = function()
-          lspconfig["sorbet"].setup({
-            capabilities = capabilities,
-            cmd = { "srb", "tc", "--lsp", "--disable-watchman" },
-          })
-        end,
+        -- ["ruby_lsp"] = function()
+        --   lspconfig["ruby_lsp"].setup({
+        --     capabilities = capabilities,
+        --     init_options = { formatter = "none" },
+        --   })
+        -- end,
+        -- ["sorbet"] = function()
+        --   lspconfig["sorbet"].setup({
+        --     capabilities = capabilities,
+        --     cmd = { "srb", "tc", "--lsp", "--disable-watchman" },
+        --   })
+        -- end,
         ["graphql"] = function()
-          lspconfig["graphql"].setup({
-            capabilities = capabilities,
-            filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
-          })
-        end,
-        ["emmet_ls"] = function()
-          lspconfig["emmet_ls"].setup({
-            capabilities = capabilities,
-            filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
-          })
-        end,
-        ["lua_ls"] = function()
-          -- configure lua server (with special settings)
-          lspconfig["lua_ls"].setup({
+          vim.lsp.config("graphql", {
             capabilities = capabilities,
             settings = {
-              Lua = {
-                -- make the language server recognize "vim" global
-                diagnostics = {
-                  globals = { "vim" },
-                },
-                completion = {
-                  callSnippet = "Replace",
+              ["graphql"] = {
+                filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
+              },
+            },
+          })
+          vim.lsp.enable("graphql")
+        end,
+        ["emmet_ls"] = function()
+          vim.lsp.config("emmet_ls", {
+            capabilities = capabilities,
+            settings = {
+              ["emmet_ls"] = {
+                filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+              },
+            },
+          })
+          lspconfig["emmet_ls"].setup({})
+          vim.lsp.enable("emmet_ls")
+        end,
+        ["lua_ls"] = function()
+          vim.lsp.config("lua_ls", {
+            capabilities = capabilities,
+            settings = {
+              ["lua_ls"] = {
+                Lua = {
+                  -- make the language server recognize "vim" global
+                  diagnostics = {
+                    globals = { "vim" },
+                  },
+                  completion = {
+                    callSnippet = "Replace",
+                  },
                 },
               },
             },
           })
+          vim.lsp.enable("lua_ls")
         end,
       })
     end,
