@@ -37,7 +37,7 @@ return {
           "kotlin",
           -- "latex",
           "markdown",
-          "markdown_inline",
+          -- "markdown_inline",
           "python",
           "regex",
           "ruby",
@@ -52,7 +52,7 @@ return {
         sync_install = true,
         highlight = {
           enable = true,
-          additional_vim_regex_highlighting = false
+          additional_vim_regex_highlighting = false,
         },
         indent = {
           enable = true,
