@@ -23,6 +23,9 @@ return {
             preview_width = 0.5,
           },
           path_display = { "smart" },
+          preview = {
+            treesitter = true,
+          },
           mappings = {
             i = {
               ["<c-o>"] = open_with_trouble,
