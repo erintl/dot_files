@@ -24,7 +24,7 @@ return {
           },
           path_display = { "smart" },
           preview = {
-            treesitter = true,
+            treesitter = false,
           },
           mappings = {
             i = {
